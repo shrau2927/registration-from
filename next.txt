@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thank You</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fce4ec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .thank-you-box {
+      background-color: #ffe6f0;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .thank-you-box h1 {
+      color: #c2185b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thank-you-box">
+    <h1>Thank You!</h1>
+    <p>Your feedback has been received.</p>
+  </div>
+
+</body>
+</html>

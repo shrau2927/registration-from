@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feedback Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fce4ec;
+    }
+
+    .form-container {
+      background-color: #ffe6f0;
+      padding: 20px;
+      width: 450px;
+      margin: 50px auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: #c2185b;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: inline-block;
+      width: 100px;
+    }
+
+    input[type="text"], textarea {
+      width: 300px;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-left: 100px;
+    }
+
+    button {
+      margin-left: 100px;
+      padding: 8px 16px;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c2185b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Feedback Form</h2>
+    <form id="feedbackForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <div class="error" id="nameError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$">
+        <div class="error" id="emailError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("feedbackForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // prevent form from submitting
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      let valid = true;
+
+      // Clear previous error messages
+      document.getElementById("nameError").textContent = "";
+      document.getElementById("emailError").textContent = "";
+
+      // Name validation (letters only, min 2 characters)
+      const namePattern = /^[a-zA-Z\s]{2,}$/;
+      if (!namePattern.test(name)) {
+        document.getElementById("nameError").textContent = "Please enter a valid name (only letters, at least 2 characters).";
+        valid = false;
+      }
+
+      // Email validation
+      const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById("emailError").textContent = "Please enter a valid email address.";
+        valid = false;
+      }
+
+      if (valid) {
+        // Redirect to thank you page if everything is valid
+        window.location.href = "thankyou.html";
+      }
+    });
+  </script>
+
+</body>
+</html>
